@@ -1,0 +1,42 @@
+<html>
+	<head>
+		<title>Report List</title>
+	</head>
+
+	<body>
+
+		{% if user.is_authenticated %}
+		
+		<h1>Hello, {{ request.user }}.</h1>
+		<!-- {{ request.user.profile.location }} -->
+		<h1>Reports List: </h1>
+		<!-- {{ current_loc }}
+		{{ queryset }} -->
+		
+		{% if reports %}
+	
+		<ul>
+			{% for query in reports %}
+			
+			<li> 
+				<a href="{% url "reports:report_detail" pk=query.id %}">{{ query.title }}</a> <br>
+				{{ query.created_at }} <br>
+				{{ query.location }} <br>
+				
+
+			</li>
+			
+			<hr>
+			
+			{% endfor %}
+		</ul>
+
+		{% endif %}
+
+		{% else %}
+			<h1>Login <a href="{% url "accounts:login" %}">Here</a></h1>
+		{% endif %}
+
+		
+	</body>
+</html>
