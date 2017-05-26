@@ -4,6 +4,7 @@ __pycache__/
 *$py.class
 
 risk/settings/local.py
+risk/settings/base.py
 
 # C extensions
 *.so
