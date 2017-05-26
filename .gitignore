@@ -3,6 +3,8 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+risk/settings/local.py
+
 # C extensions
 *.so
 
