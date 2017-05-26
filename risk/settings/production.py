@@ -36,7 +36,7 @@ DEBUG = False
 #     )
 # }
 
-ALLOWED_HOSTS = ["radiant-reef-57997.herokuapp.com"]
+ALLOWED_HOSTS = ["riskdemo.herokuapp.com"]
 
 
 # Application definition
