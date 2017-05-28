@@ -1,4 +1,4 @@
-from django.shortcuts import render
+
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
@@ -38,6 +38,12 @@ class ReportList(ListView):
 		user_loc = self.request.user.profile.get().location
 		qs = super().get_queryset()
 		return qs.filter(Q(location__icontains=user_loc))
+
+	def get_context_data(self, *args, **kwargs):
+		context = super(ReportList, self).get_context_data(*args, **kwargs)
+		user_loc = self.request.user.profile.get().location
+		context["user_loc"] = user_loc
+		return context
 
 
 class ReportDetail(DetailView):

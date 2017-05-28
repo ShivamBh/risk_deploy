@@ -14,7 +14,7 @@
 		
 		<div class="container">
 			<div class="content">
-				<h1>Hello, {{ request.user }}.</h1>
+				<h4>Hello, {{ request.user }}.</h4>
 				<!-- {{ request.user.profile.location }} -->
 				<h1>Reports List: </h1>
 				<!-- {{ current_loc }}
@@ -37,6 +37,10 @@
 					
 					{% endfor %}
 				</ul>
+
+				{% else %}
+
+					<h3>No reports from your area({{ user_loc }}) yet.</h3>
 
 				{% endif %}
 
