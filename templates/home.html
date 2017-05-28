@@ -1,0 +1,20 @@
+{% load staticfiles %}
+<html>
+	<head>
+		<title>Risk App demo</title>
+		<link rel="stylesheet" href="{% static 'css/main.css' %}">
+	</head>
+
+	<body>
+	{% if user.is_authenticated %}
+		<h1 id="homeh1">Welcome, {{ user.username }} </h1>
+		<p>To view Reports, click <a href="{% url 'reports:report_list' %}">here</a></p>
+	{% endif %}
+
+	{% if not user.is_authenticated %}
+		
+		<p>You can now <a href="{% url "accounts:login" %}">Login</a>.</p>
+		<p>To register a new user, click <a href="{% url 'accounts:register'%}">Register</a>.</p>
+	{% endif %}
+	</body>
+</html>

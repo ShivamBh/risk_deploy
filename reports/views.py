@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic.detail import DetailView
 from django.views.generic.list import ListView
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from .models import Report, ReportLoc
 
@@ -21,6 +22,10 @@ from accounts.models import Profile
 # 	template = 'reports/detail.html'
 # 	context = {"reports_list": report}
 # 	return render(request, template, context)
+
+# def home(request):
+	
+
 
 class ReportList(ListView):
 	model = Report

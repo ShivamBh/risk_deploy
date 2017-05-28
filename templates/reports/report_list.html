@@ -1,41 +1,59 @@
+{% load staticfiles %}
+
 <html>
 	<head>
 		<title>Report List</title>
+		<link rel="stylesheet" href="{% static 'css/main.css' %}">
 	</head>
+
+	
 
 	<body>
 
 		{% if user.is_authenticated %}
 		
-		<h1>Hello, {{ request.user }}.</h1>
-		<!-- {{ request.user.profile.location }} -->
-		<h1>Reports List: </h1>
-		<!-- {{ current_loc }}
-		{{ queryset }} -->
-		
-		{% if reports %}
-	
-		<ul>
-			{% for query in reports %}
-			
-			<li> 
-				<a href="{% url "reports:report_detail" pk=query.id %}">{{ query.title }}</a> <br>
-				{{ query.created_at }} <br>
-				{{ query.location }} <br>
+		<div class="container">
+			<div class="content">
+				<h1>Hello, {{ request.user }}.</h1>
+				<!-- {{ request.user.profile.location }} -->
+				<h1>Reports List: </h1>
+				<!-- {{ current_loc }}
+				{{ queryset }} -->
 				
+				{% if reports %}
+			
+				<ul>
+					{% for query in reports %}
+					
+					<li> 
+						<a href="{% url "reports:report_detail" pk=query.id %}">{{ query.title }}</a> <br>
+						{{ query.created_at }} <br>
+						{{ query.location }} <br>
+						
 
-			</li>
-			
-			<hr>
-			
-			{% endfor %}
-		</ul>
+					</li>
+					
+					<hr>
+					
+					{% endfor %}
+				</ul>
+
+				{% endif %}
+
+				{% else %}
+					<h1>Login <a href="{% url "accounts:login" %}">Here</a></h1>
+		{% endif %}
+		{% if not user.is_authenticated %}
+			<h1>You need to login to view reports. Click <a href="{% url 'accounts:login' %}">here</a>to log-in.</h1>
+		}
 
 		{% endif %}
+			</div>
 
-		{% else %}
-			<h1>Login <a href="{% url "accounts:login" %}">Here</a></h1>
-		{% endif %}
+			<div class="nav-links">
+				<a href="{% url "accounts:logout" %}">Logout</a>
+			</div>
+		</div>
 
 		
 	</body>

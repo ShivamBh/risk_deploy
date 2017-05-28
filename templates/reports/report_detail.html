@@ -1,35 +1,66 @@
+{% load staticfiles %}
 <html>
 	<head>
 		<title>Report Detail</title>
+		<link rel="stylesheet" href="{% static 'css/main.css' %}">
 	</head>
 
+	
 	<body>
 		
+		<main id="main-container">
+			<section class="details">
+				<h1 id="reportheader">Reports Details: </h1>
+		
+				<strong>Latitude</strong>: <span id="lat">{{ lat }}</span> | 
+				<strong>Longitude</strong>: <span id="long">{{ long }}</span>
+		
+				<div class="title">
+					<h3>Report Title: {{ object.title }}</h3>
+					
+				</div>
 
-		
+				<div class="date">
+					<h4>Date : {{ object.created_at }} </h4>
+				</div>
+					
+				<div class="location">
+					<p><strong>Location</strong> : {{ object.location }}</p>
+				</div>
 
-		<h1>Reports Details: </h1>
-		
-		<span id="lat">{{ lat }}</span> |  <span id="long">{{ long }}</span>
-		
-		<ul>
-			
-			<li> 
-				{{ object.title }} <br>
-				{{ object.created_at }} <br>
-				{{ object.location }} <br>
-				<span id="rep_desc">{{ object.description }}</span> <br>
-				{{ object.advice }} 
+				<div class="description">
+					<p><strong>Description</strong>: <span id="rep_desc">{{ object.description }}</span> </p>
+				</div>
+
+				<div class="advice">
+					<p><strong>Advice</strong> : {{ object.advice }} </p>
+				</div>	 
+						
+						 
+						
+						
+						
+					
+					
+					
 				
-			</li>
+			</section>
 			
-			
-		</ul>
+			<hr>
 
-		<hr>
+			<section class="maps">
 
-		<h3>Map Plot:</h3>
-		<div id="gmaps" style="width: 400px; height: 400px; background-color: grey;"></div>
+				<h3>Map Plot:</h3>
+				<div id="gmaps" style="width: 400px; height: 400px; background-color: grey;"></div>
+			</section>
+		</main>
+		
+	
+		
+
+		
+
+		
 
 		
 	<script>
